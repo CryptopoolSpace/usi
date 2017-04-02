@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Doctor;
+use App\Appointment;
 use App\Http\Requests;
 
 class DoctorController extends Controller
@@ -23,5 +24,13 @@ class DoctorController extends Controller
         $doctor = Doctor::find($id);
         $appointments = $doctor->appointments;
         return response()->json($appointments);
+    }
+    public function getAppointment(){
+        $id = request()->route("id");
+        $doctor = Doctor::find($id);
+        $appointments = $doctor->appointments;
+        $appointment_id = request()->route("appointment_id");
+        $appointment = Appointment::find($appointment_id);
+        return response()->json($appointment);
     }
 }
