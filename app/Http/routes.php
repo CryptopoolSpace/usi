@@ -24,3 +24,4 @@ Route::get('appointment/{id}', array('as' => 'read_appointment', 'uses' => 'Appo
 Route::get('speciality', array('as' => 'read_speciality', 'uses' => 'SpecialityController@show'));
 Route::get('speciality/{id}', array('as' => 'read_speciality', 'uses' => 'SpecialityController@get'));
 Route::post('patient/create', array('as' => 'create_patient', 'uses' => 'PatientController@create'));
+Route::post('patient/{id}/edit', array('as' => 'update_patient', 'uses' => 'PatientController@update'));

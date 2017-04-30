@@ -24,6 +24,22 @@ class PatientController extends Controller
         return response()->json(["id"=>$patient->id]);
     }
     
+ public function update(){
+     $patient_id = request()->route("id");
+     $patient = Patient::find($patient_id);
+     $data = request()->all();
+     $patient->first_name = array_get($data, "first_name");
+     $patient->last_name = array_get($data, "last_name");
+     if(!is_null(array_get($data, "phone"))){             
+        $patient->phone = array_get($data, "phone");
+     }
+     $patient->gender = array_get($data, "gender");
+     $patient->birthday = array_get($data, "birthday");
+     $patient->email = array_get($data, "email");
+     $patient->save();
+     return response()->json($patient);
+ }
+    
     public function get(){
         $id = request()->route("id");
         $patient = Patient::find($id);
